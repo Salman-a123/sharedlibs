@@ -4,11 +4,7 @@ def call(name){
   node {
      checkout scm
      stage ("Compile") {
-	sh "gcc hello.c -o hello"
+	sh "python hello.py"
      }
-     stage ("Run") {
-	sh "./hello"
-     }
-
   }
 }
