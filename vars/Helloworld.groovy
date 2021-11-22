@@ -1,11 +1,6 @@
-def call(name){
-  echo "Hey $name. How are you...!"
-
-  node {
-     checkout scm
-     stage ("Compile") {
-     sh "python hello.py"
-     }
+pipeline {
+  agent none
+  stages {
     stage('Back-end') {
       agent {
         docker { image 'maven:3.8.1-adoptopenjdk-11' }
@@ -21,6 +16,6 @@ def call(name){
       steps {
         sh 'node --version'
       }
-    } 
+    }
   }
 }
