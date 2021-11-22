@@ -6,20 +6,21 @@ def call(name){
      stage ("Compile") {
      sh "python hello.py"
      }
-    stage("build") {
+    stage('Back-end') {
+      agent {
+        docker { image 'maven:3.8.1-adoptopenjdk-11' }
+      }
       steps {
-        sh """
-          docker build -t hello_there .
-        """
+        sh 'mvn --version'
       }
     }
-    stage("run") {
-      steps {
-        sh """
-          docker run --rm hello_there
-        """
+    stage('Front-end') {
+      agent {
+        docker { image 'node:16-alpine' }
       }
-    }
-     
+      steps {
+        sh 'node --version'
+      }
+    } 
   }
 }
