@@ -9,6 +9,9 @@ def call(name){
      stage ("Run") {
 	sh "./Example"
      }
+	  stage("Run Docker Image") {
+	  echo "I am into the docker running stage"
+	  }
 
   }
 }
