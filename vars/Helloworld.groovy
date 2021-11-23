@@ -1,6 +1,9 @@
 def call(name){
   echo "Hey $name. How are you...!"
-
+  agent {
+    echo "I am into the check point 1"
+    docker { image 'node:16-alpine'
+    }
   node {
      checkout scm
      stage ("Compile") {
